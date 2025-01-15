@@ -15,9 +15,9 @@ jobs:
         with:
           fetch-depth: 0  # Ensure the full repository is checked out
 
-      - name: Clone Wiki Repository
-        run: |
-          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/jakobsonsjanis/github-pages-test.wiki.git wiki
+    - name: Clone Wiki Repository
+    run: |
+      git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/jakobsonsjanis/github-pages-test.wiki.git wiki
 
       - name: Configure Git User
         run: |
