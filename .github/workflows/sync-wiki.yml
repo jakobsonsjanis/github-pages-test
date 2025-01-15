@@ -16,7 +16,7 @@ jobs:
 
       - name: Clone Wiki Repository
         run: |
-          git clone https://<username>:${{ secrets.GITHUB_TOKEN }}@github.com/<username>/<repository-name>.wiki.git wiki
+          git clone https://janisjakobsons:${{ secrets.GITHUB_TOKEN }}@github.com/janisjakobsons/github-pages-test.wiki.git wiki
 
       - name: Sync Docs
         run: |
