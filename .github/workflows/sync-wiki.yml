@@ -8,19 +8,27 @@ on:
 jobs:
   sync-wiki:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # Ensure the full repository is checked out
 
       - name: Clone Wiki Repository
         run: |
-          git clone https://jakobsonsjanis:${{ secrets.GITHUB_TOKEN }}@github.com/jakobsonsjanis/github-pages-test.wiki.git wiki
-      - name: Sync Docs
+          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/jakobsonsjanis/github-pages-test.wiki.git wiki
+
+      - name: Collect All /docs Folders
         run: |
-          rsync -av --delete ./docs/ ./wiki/
+          mkdir -p wiki/docs
+          find . -type d -name "docs" -not -path "./wiki/*" | while read DOC_FOLDER; do
+            rsync -av --exclude=".git" "$DOC_FOLDER/" wiki/docs/
+          done
+
+      - name: Commit and Push to Wiki
+        run: |
           cd wiki
           git add .
-          git commit -m "Sync content from /docs"
+          git commit -m "Sync all /docs content to Wiki"
           git push
