@@ -19,6 +19,11 @@ jobs:
         run: |
           git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/jakobsonsjanis/github-pages-test.wiki.git wiki
 
+      - name: Configure Git User
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+
       - name: Collect All /docs Folders
         run: |
           mkdir -p wiki/docs
