@@ -16,8 +16,7 @@ jobs:
 
       - name: Clone Wiki Repository
         run: |
-          git clone https://janisjakobsons:${{ secrets.GITHUB_TOKEN }}@github.com/janisjakobsons/github-pages-test.wiki.git wiki
-
+          git clone https://jakobsonsjanis:${{ secrets.GITHUB_TOKEN }}@github.com/jakobsonsjanis/github-pages-test.wiki.git wiki
       - name: Sync Docs
         run: |
           rsync -av --delete ./docs/ ./wiki/
