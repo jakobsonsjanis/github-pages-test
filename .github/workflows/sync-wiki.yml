@@ -3,7 +3,7 @@ name: Sync Docs to Wiki
 on:
   push:
     branches:
-      - main  # Trigger when changes are pushed to the main branch
+      - main
 
 jobs:
   sync-wiki:
@@ -13,11 +13,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Ensure the full repository is checked out
+          fetch-depth: 0
 
-    - name: Clone Wiki Repository
-    run: |
-      git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/jakobsonsjanis/github-pages-test.wiki.git wiki
+      - name: Clone Wiki Repository
+        run: |
+          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/jakobsonsjanis/github-pages-test.wiki.git wiki
 
       - name: Configure Git User
         run: |
